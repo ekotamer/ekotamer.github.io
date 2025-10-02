@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,190 +11,248 @@
             box-sizing: border-box;
         }
 
-```
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 20px;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
 
-    .container {
-        background: white;
-        border-radius: 20px;
-        padding: 40px;
-        max-width: 500px;
-        width: 100%;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        text-align: center;
-    }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: background 0.5s ease;
+        }
 
-    .girl-avatar {
-        font-size: 100px;
-        margin-bottom: 20px;
-        animation: bounce 0.5s ease;
-    }
+        .girl-avatar {
+            font-size: 100px;
+            margin-bottom: 20px;
+            animation: bounce 0.5s ease;
+        }
 
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-10px) rotate(-5deg); }
-        75% { transform: translateX(10px) rotate(5deg); }
-    }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px) rotate(-5deg); }
+            75% { transform: translateX(10px) rotate(5deg); }
+        }
 
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-    }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
 
-    .angry {
-        animation: shake 0.5s ease;
-    }
+        .angry {
+            animation: shake 0.5s ease;
+        }
 
-    .super-angry {
-        animation: shake 0.3s ease infinite;
-    }
+        .super-angry {
+            animation: shake 0.3s ease infinite;
+        }
 
-    h1 {
-        color: #333;
-        margin-bottom: 30px;
-        font-size: 24px;
-    }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
 
-    .buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 30px;
-    }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
 
-    button {
-        padding: 15px 40px;
-        font-size: 18px;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 140px;
+        }
 
-    .yes-btn {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-    }
+        .yes-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
 
-    .yes-btn:hover {
-        transform: scale(1.1);
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-    }
+        .yes-btn:hover, .yes-btn:focus {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
 
-    .no-btn {
-        background: #e0e0e0;
-        color: #666;
-    }
+        .no-btn {
+            background: #e0e0e0;
+            color: #666;
+        }
 
-    .no-btn:hover {
-        background: #d0d0d0;
-        transform: scale(1.05);
-    }
+        .no-btn:hover, .no-btn:focus {
+            background: #d0d0d0;
+            transform: scale(1.05);
+        }
 
-    .success-message {
-        display: none;
-        animation: pulse 0.5s ease;
-    }
+        .success-message {
+            display: none;
+            animation: pulse 0.5s ease;
+        }
 
-    .success-message h1 {
-        color: #667eea;
-        font-size: 28px;
-    }
+        .success-message h1 {
+            color: #667eea;
+            font-size: 28px;
+        }
 
-    .hearts {
-        font-size: 50px;
-        margin: 20px 0;
-    }
+        .hearts {
+            font-size: 50px;
+            margin: 20px 0;
+        }
 
-    .message {
-        font-size: 18px;
-        color: #666;
-        line-height: 1.6;
-    }
-</style>
-```
+        .message {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+        }
 
+        /* Confirmation screen */
+        .confirmation-screen {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .girl-avatar {
+                font-size: 80px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            button {
+                padding: 12px 30px;
+                font-size: 16px;
+                min-width: 120px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- Initial question screen -->
         <div id="question-screen">
-            <div class="girl-avatar" id="avatar">👧</div>
+            <div class="girl-avatar" id="avatar" role="img" aria-label="Girl avatar">👧</div>
             <h1 id="question">Do you want to be my boyfriend?</h1>
             <div class="buttons">
-                <button class="yes-btn" onclick="sayYes()">Yes 💕</button>
-                <button class="no-btn" id="no-btn" onclick="sayNo()">No</button>
+                <button class="yes-btn" onclick="showConfirmation()" aria-label="Yes, I want to be your boyfriend">Yes 💕</button>
+                <button class="no-btn" id="no-btn" onclick="sayNo()" aria-label="No, I don't want to be your boyfriend">No</button>
             </div>
         </div>
 
-```
-    <div class="success-message" id="success">
-        <div class="girl-avatar">😊</div>
-        <div class="hearts">💖💕💗</div>
-        <h1>Yay! I'm so happy!</h1>
-        <p class="message">You made the right choice! 💕</p>
+        <!-- Confirmation screen -->
+        <div class="confirmation-screen" id="confirmation-screen">
+            <div class="girl-avatar" role="img" aria-label="Girl avatar looking hopeful">🥺</div>
+            <h1>Are you sure?</h1>
+            <p class="message">This is a very important decision!</p>
+            <div class="buttons">
+                <button class="yes-btn" onclick="sayYes()" aria-label="Yes, I'm sure">Yes, I'm sure! 💕</button>
+                <button class="no-btn" onclick="hideConfirmation()" aria-label="No, take me back">Take me back</button>
+            </div>
+        </div>
+
+        <!-- Success message -->
+        <div class="success-message" id="success">
+            <div class="girl-avatar" role="img" aria-label="Happy girl avatar">😊</div>
+            <div class="hearts" role="img" aria-label="Floating hearts">💖💕💗</div>
+            <h1>Yay! I'm so happy!</h1>
+            <p class="message">You made the right choice! 💕</p>
+        </div>
     </div>
-</div>
 
-<script>
-    let refusalCount = 0;
+    <script>
+        let refusalCount = 0;
 
-    function sayNo() {
-        refusalCount++;
-        const avatar = document.getElementById('avatar');
-        const question = document.getElementById('question');
-        const noBtn = document.getElementById('no-btn');
+        function sayNo() {
+            refusalCount++;
+            const avatar = document.getElementById('avatar');
+            const question = document.getElementById('question');
+            const noBtn = document.getElementById('no-btn');
+            const container = document.querySelector('.container');
 
-        if (refusalCount === 1) {
-            // First refusal - angry
-            avatar.textContent = '😠';
-            avatar.className = 'girl-avatar angry';
-            question.textContent = 'Do you want to be my boyfriend?';
-            question.style.color = '#ff6b6b';
-            document.querySelector('.container').style.background = '#ffe0e0';
-            
-            setTimeout(() => {
-                avatar.className = 'girl-avatar';
-            }, 500);
+            if (refusalCount === 1) {
+                // First refusal - angry
+                avatar.textContent = '😠';
+                avatar.className = 'girl-avatar angry';
+                avatar.setAttribute('aria-label', 'Angry girl avatar');
+                question.textContent = 'Do you want to be my boyfriend?';
+                question.style.color = '#ff6b6b';
+                container.style.background = '#ffe0e0';
+                
+                setTimeout(() => {
+                    avatar.className = 'girl-avatar';
+                }, 500);
 
-        } else if (refusalCount === 2) {
-            // Second refusal - super mad, remove no button
-            avatar.textContent = '😡';
-            avatar.className = 'girl-avatar super-angry';
-            question.textContent = 'DO YOU WANT TO BE MY BOYFRIEND?!';
-            question.style.color = '#ff0000';
-            question.style.fontSize = '28px';
-            document.querySelector('.container').style.background = '#ffcccc';
-            
-            // Remove the no button and replace with another yes
-            noBtn.textContent = 'Yes 💕';
-            noBtn.className = 'yes-btn';
-            noBtn.onclick = sayYes;
+            } else if (refusalCount === 2) {
+                // Second refusal - super mad, remove no button
+                avatar.textContent = '😡';
+                avatar.className = 'girl-avatar super-angry';
+                avatar.setAttribute('aria-label', 'Very angry girl avatar');
+                question.textContent = 'DO YOU WANT TO BE MY BOYFRIEND?!';
+                question.style.color = '#ff0000';
+                question.style.fontSize = '28px';
+                container.style.background = '#ffcccc';
+                
+                // Remove the no button and replace with another yes
+                noBtn.textContent = 'Yes 💕';
+                noBtn.className = 'yes-btn';
+                noBtn.setAttribute('aria-label', 'Yes, I want to be your boyfriend');
+                noBtn.onclick = showConfirmation;
+            }
         }
-    }
 
-    function sayYes() {
-        document.getElementById('question-screen').style.display = 'none';
-        document.getElementById('success').style.display = 'block';
-        document.querySelector('.container').style.background = 'white';
-    }
-</script>
-```
+        function showConfirmation() {
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('confirmation-screen').style.display = 'block';
+        }
 
+        function hideConfirmation() {
+            document.getElementById('confirmation-screen').style.display = 'none';
+            document.getElementById('question-screen').style.display = 'block';
+        }
+
+        function sayYes() {
+            document.getElementById('confirmation-screen').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+            document.querySelector('.container').style.background = 'white';
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                hideConfirmation();
+            }
+        });
+    </script>
 </body>
 </html>
