@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة اختيار بسيطة</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 50px; background-color: #f9f9f9; }
+    #story { font-size: 24px; margin-bottom: 30px; }
+    button { padding: 10px 30px; font-size: 20px; margin: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <div id="story">هل اسمك مجدي؟</div>
+  <button onclick="choose(true)">نعم</button>
+  <button onclick="choose(false)">لا</button>
+
+  <script>
+    function choose(answer) {
+      const story = document.getElementById('story');
+      if(answer) {
+        story.innerText = "أهلاً مجدي! 👋";
+      } else {
+        story.innerText = "آه، إذًا ليس مجدي 😅";
+      }
+    }
+  </script>
+
+</body>
+</html>
