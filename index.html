@@ -33,14 +33,13 @@
         }
 
         .girl-avatar {
-            font-size: 100px;
             margin-bottom: 20px;
-            animation: bounce 0.5s ease;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .girl-avatar img {
+            width: 200px;   /* adjust size */
+            height: auto;
+            border-radius: 15px;
         }
 
         @keyframes shake {
@@ -131,19 +130,17 @@
             line-height: 1.6;
         }
 
-        /* Confirmation screen */
         .confirmation-screen {
             display: none;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 480px) {
             .container {
                 padding: 30px 20px;
             }
             
-            .girl-avatar {
-                font-size: 80px;
+            .girl-avatar img {
+                width: 150px;
             }
             
             h1 {
@@ -160,31 +157,37 @@
 </head>
 <body>
     <div class="container">
-        <!-- Initial question screen -->
+        <!-- Question Screen -->
         <div id="question-screen">
-            <div class="girl-avatar" id="avatar" role="img" aria-label="Girl avatar">👧</div>
+            <div class="girl-avatar">
+                <img id="avatar" src="girl_normal.png" alt="Normal girl">
+            </div>
             <h1 id="question">Do you want to be my boyfriend?</h1>
             <div class="buttons">
-                <button class="yes-btn" onclick="showConfirmation()" aria-label="Yes, I want to be your boyfriend">Yes 💕</button>
-                <button class="no-btn" id="no-btn" onclick="sayNo()" aria-label="No, I don't want to be your boyfriend">No</button>
+                <button class="yes-btn" onclick="showConfirmation()">Yes 💕</button>
+                <button class="no-btn" id="no-btn" onclick="sayNo()">No</button>
             </div>
         </div>
 
-        <!-- Confirmation screen -->
+        <!-- Confirmation Screen -->
         <div class="confirmation-screen" id="confirmation-screen">
-            <div class="girl-avatar" role="img" aria-label="Girl avatar looking hopeful">🥺</div>
+            <div class="girl-avatar">
+                <img src="girl_normal.png" alt="Hopeful girl">
+            </div>
             <h1>Are you sure?</h1>
             <p class="message">This is a very important decision!</p>
             <div class="buttons">
-                <button class="yes-btn" onclick="sayYes()" aria-label="Yes, I'm sure">Yes, I'm sure! 💕</button>
-                <button class="no-btn" onclick="hideConfirmation()" aria-label="No, take me back">Take me back</button>
+                <button class="yes-btn" onclick="sayYes()">Yes, I'm sure! 💕</button>
+                <button class="no-btn" onclick="hideConfirmation()">Take me back</button>
             </div>
         </div>
 
-        <!-- Success message -->
+        <!-- Success Screen -->
         <div class="success-message" id="success">
-            <div class="girl-avatar" role="img" aria-label="Happy girl avatar">😊</div>
-            <div class="hearts" role="img" aria-label="Floating hearts">💖💕💗</div>
+            <div class="girl-avatar">
+                <img src="girl_happy.png" alt="Happy girl">
+            </div>
+            <div class="hearts">💖💕💗</div>
             <h1>Yay! I'm so happy!</h1>
             <p class="message">You made the right choice! 💕</p>
         </div>
@@ -201,32 +204,29 @@
             const container = document.querySelector('.container');
 
             if (refusalCount === 1) {
-                // First refusal - angry
-                avatar.textContent = '😠';
-                avatar.className = 'girl-avatar angry';
-                avatar.setAttribute('aria-label', 'Angry girl avatar');
+                // First refusal → Angry
+                avatar.src = "girl_angry.png";
+                avatar.className = 'angry';
                 question.textContent = 'Do you want to be my boyfriend?';
                 question.style.color = '#ff6b6b';
                 container.style.background = '#ffe0e0';
-                
+
                 setTimeout(() => {
-                    avatar.className = 'girl-avatar';
+                    avatar.className = '';
                 }, 500);
 
             } else if (refusalCount === 2) {
-                // Second refusal - super mad, remove no button
-                avatar.textContent = '😡';
-                avatar.className = 'girl-avatar super-angry';
-                avatar.setAttribute('aria-label', 'Very angry girl avatar');
+                // Second refusal → Super Angry
+                avatar.src = "girl_superangry.png";
+                avatar.className = 'super-angry';
                 question.textContent = 'DO YOU WANT TO BE MY BOYFRIEND?!';
                 question.style.color = '#ff0000';
                 question.style.fontSize = '28px';
                 container.style.background = '#ffcccc';
-                
-                // Remove the no button and replace with another yes
+
+                // Change No button into Yes
                 noBtn.textContent = 'Yes 💕';
                 noBtn.className = 'yes-btn';
-                noBtn.setAttribute('aria-label', 'Yes, I want to be your boyfriend');
                 noBtn.onclick = showConfirmation;
             }
         }
@@ -246,13 +246,6 @@
             document.getElementById('success').style.display = 'block';
             document.querySelector('.container').style.background = 'white';
         }
-
-        // Add keyboard navigation
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                hideConfirmation();
-            }
-        });
     </script>
 </body>
 </html>
