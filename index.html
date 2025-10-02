@@ -1,419 +1,201 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قصة حب تفاعلية</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Important Question</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
     body {
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      color: #333;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
     }
-    
+
     .container {
-      max-width: 800px;
-      width: 100%;
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      position: relative;
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 500px;
+        width: 100%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
     }
-    
-    .header {
-      background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-      color: white;
-      padding: 25px;
-      text-align: center;
-      position: relative;
+
+    .girl-avatar {
+        font-size: 100px;
+        margin-bottom: 20px;
+        animation: bounce 0.5s ease;
     }
-    
-    .header h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
     }
-    
-    .header p {
-      font-size: 18px;
-      opacity: 0.9;
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px) rotate(-5deg); }
+        75% { transform: translateX(10px) rotate(5deg); }
     }
-    
-    .heart {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 28px;
-      color: #ff6b6b;
-      animation: heartbeat 1.5s infinite;
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
     }
-    
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+
+    .angry {
+        animation: shake 0.5s ease;
     }
-    
-    .content {
-      padding: 30px;
-      min-height: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+
+    .super-angry {
+        animation: shake 0.3s ease infinite;
     }
-    
-    .story-text {
-      font-size: 22px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      text-align: center;
-      min-height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-      transition: all 0.5s ease;
+
+    h1 {
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 24px;
     }
-    
-    .animation-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 180px;
-      margin: 20px 0;
-      position: relative;
-    }
-    
-    .character {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 50px;
-      margin: 0 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.5s ease;
-    }
-    
-    .boy {
-      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    }
-    
-    .girl {
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-    }
-    
-    .progress-container {
-      width: 100%;
-      height: 10px;
-      background-color: #e0e0e0;
-      border-radius: 5px;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-    
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      width: 0%;
-      transition: width 0.5s ease;
-    }
-    
+
     .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
     }
-    
+
     button {
-      padding: 14px 40px;
-      font-size: 18px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      min-width: 150px;
+        padding: 15px 40px;
+        font-size: 18px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
-    
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
-    
-    button:active {
-      transform: translateY(1px);
-    }
-    
+
     .yes-btn {
-      background: linear-gradient(to right, #4CAF50, #8BC34A);
-      color: white;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
     }
-    
+
+    .yes-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
     .no-btn {
-      background: linear-gradient(to right, #f44336, #FF9800);
-      color: white;
+        background: #e0e0e0;
+        color: #666;
     }
-    
-    .restart-btn {
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      color: white;
-      display: none;
-      margin: 20px auto;
+
+    .no-btn:hover {
+        background: #d0d0d0;
+        transform: scale(1.05);
     }
-    
-    .ending-message {
-      text-align: center;
-      font-size: 24px;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 10px;
-      display: none;
+
+    .success-message {
+        display: none;
+        animation: pulse 0.5s ease;
     }
-    
-    .happy-ending {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      border: 2px solid #4caf50;
+
+    .success-message h1 {
+        color: #667eea;
+        font-size: 28px;
     }
-    
-    .open-ending {
-      background-color: #fff3e0;
-      color: #ef6c00;
-      border: 2px solid #ff9800;
+
+    .hearts {
+        font-size: 50px;
+        margin: 20px 0;
     }
-    
-    .scene-indicator {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 16px;
-      color: #666;
+
+    .message {
+        font-size: 18px;
+        color: #666;
+        line-height: 1.6;
     }
-    
-    @media (max-width: 600px) {
-      .header h1 {
-        font-size: 26px;
-      }
-      
-      .story-text {
-        font-size: 19px;
-      }
-      
-      button {
-        padding: 12px 25px;
-        font-size: 16px;
-        min-width: 120px;
-      }
-      
-      .character {
-        width: 100px;
-        height: 100px;
-        font-size: 40px;
-      }
-    }
-  </style>
+</style>
+```
+
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="heart">❤️</div>
-      <h1>قصة حب تفاعلية</h1>
-      <p>اتخذ قراراتك وشاهد كيف تتطور القصة</p>
-    </div>
-    
-    <div class="content">
-      <div class="story-text" id="storyText">
-        مرحبًا! هذه قصة عن صبي وفتاة لعبوا معًا في الطفولة. دعنا نبدأ رحلتهم معًا...
-      </div>
-      
-      <div class="animation-container">
-        <div class="character boy">👦</div>
-        <div class="character girl">👧</div>
-      </div>
-      
-      <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-      
-      <div class="scene-indicator" id="sceneIndicator">المشهد 1 من 5</div>
-      
-      <div class="buttons">
-        <button class="yes-btn" onclick="makeChoice(true)">نعم</button>
-        <button class="no-btn" onclick="makeChoice(false)">لا</button>
-      </div>
-      
-      <div class="ending-message" id="endingMessage"></div>
-      <button class="restart-btn" id="restartBtn" onclick="restartGame()">العب مرة أخرى</button>
-    </div>
-  </div>
+    <div class="container">
+        <div id="question-screen">
+            <div class="girl-avatar" id="avatar">👧</div>
+            <h1 id="question">Do you want to be my boyfriend?</h1>
+            <div class="buttons">
+                <button class="yes-btn" onclick="sayYes()">Yes 💕</button>
+                <button class="no-btn" id="no-btn" onclick="sayNo()">No</button>
+            </div>
+        </div>
 
-  <script>
-    // بيانات القصة
-    const storyScenes = [
-      {
-        text: "في الطفولة، لعب الولد والبنت معًا وكانا صديقين مقربين. هل تريد أن تستمر هذه الصداقة؟",
-        scene: "الطفولة",
-        progress: 20
-      },
-      {
-        text: "في المدرسة الإعدادية، بدأ الولد يشعر بالإعجاب تجاه البنت. هل تعتقد أنه يجب أن يعترف بمشاعره؟",
-        scene: "الإعدادي",
-        progress: 40
-      },
-      {
-        text: "في الثانوية، حاول الولد أن يبعد البنت عن باله ليركز على دراسته. هل تعتقد أن هذا القرار صحيح؟",
-        scene: "الثانوية",
-        progress: 60
-      },
-      {
-        text: "بعد التخرج، اكتشف الولد أن البنت لا تزال عازبة. هل تعتقد أنه يجب أن يتقدم لخطبتها؟",
-        scene: "اكتشاف",
-        progress: 80
-      },
-      {
-        text: "قرر الولد التقدم لخطبة البنت. هل تعتقد أنها ستوافق عليه؟",
-        scene: "النتيجة",
-        progress: 100
-      }
-    ];
-    
-    // متغيرات اللعبة
-    let currentScene = 0;
-    let choices = [];
-    const storyText = document.getElementById('storyText');
-    const progressBar = document.getElementById('progressBar');
-    const sceneIndicator = document.getElementById('sceneIndicator');
-    const endingMessage = document.getElementById('endingMessage');
-    const restartBtn = document.getElementById('restartBtn');
-    const buttons = document.querySelector('.buttons');
-    const animationContainer = document.querySelector('.animation-container');
-    
-    // تحديث المشهد
-    function updateScene() {
-      if (currentScene < storyScenes.length) {
-        const scene = storyScenes[currentScene];
-        storyText.textContent = scene.text;
-        progressBar.style.width = scene.progress + '%';
-        sceneIndicator.textContent = `المشهد ${currentScene + 1} من ${storyScenes.length}`;
-        
-        // تحديث الرسوم المتحركة بناءً على المشهد
-        updateAnimation();
-      } else {
-        showEnding();
-      }
+```
+    <div class="success-message" id="success">
+        <div class="girl-avatar">😊</div>
+        <div class="hearts">💖💕💗</div>
+        <h1>Yay! I'm so happy!</h1>
+        <p class="message">You made the right choice! 💕</p>
+    </div>
+</div>
+
+<script>
+    let refusalCount = 0;
+
+    function sayNo() {
+        refusalCount++;
+        const avatar = document.getElementById('avatar');
+        const question = document.getElementById('question');
+        const noBtn = document.getElementById('no-btn');
+
+        if (refusalCount === 1) {
+            // First refusal - angry
+            avatar.textContent = '😠';
+            avatar.className = 'girl-avatar angry';
+            question.textContent = 'Do you want to be my boyfriend?';
+            question.style.color = '#ff6b6b';
+            document.querySelector('.container').style.background = '#ffe0e0';
+            
+            setTimeout(() => {
+                avatar.className = 'girl-avatar';
+            }, 500);
+
+        } else if (refusalCount === 2) {
+            // Second refusal - super mad, remove no button
+            avatar.textContent = '😡';
+            avatar.className = 'girl-avatar super-angry';
+            question.textContent = 'DO YOU WANT TO BE MY BOYFRIEND?!';
+            question.style.color = '#ff0000';
+            question.style.fontSize = '28px';
+            document.querySelector('.container').style.background = '#ffcccc';
+            
+            // Remove the no button and replace with another yes
+            noBtn.textContent = 'Yes 💕';
+            noBtn.className = 'yes-btn';
+            noBtn.onclick = sayYes;
+        }
     }
-    
-    // تحديث الرسوم المتحركة
-    function updateAnimation() {
-      const boy = document.querySelector('.boy');
-      const girl = document.querySelector('.girl');
-      
-      // إعادة تعيين التحويلات
-      boy.style.transform = 'scale(1)';
-      girl.style.transform = 'scale(1)';
-      
-      // تأثيرات مختلفة لكل مشهد
-      switch(currentScene) {
-        case 0: // الطفولة
-          boy.innerHTML = "👦";
-          girl.innerHTML = "👧";
-          break;
-        case 1: // الإعدادي
-          boy.innerHTML = "😍";
-          girl.innerHTML = "😊";
-          boy.style.transform = 'scale(1.1)';
-          break;
-        case 2: // الثانوية
-          boy.innerHTML = "😔";
-          girl.innerHTML = "😕";
-          break;
-        case 3: // الاكتشاف
-          boy.innerHTML = "😲";
-          girl.innerHTML = "💭";
-          break;
-        case 4: // النتيجة
-          boy.innerHTML = "🤵";
-          girl.innerHTML = "👰";
-          break;
-      }
+
+    function sayYes() {
+        document.getElementById('question-screen').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+        document.querySelector('.container').style.background = 'white';
     }
-    
-    // اتخاذ قرار
-    function makeChoice(choice) {
-      choices.push(choice);
-      currentScene++;
-      
-      if (currentScene < storyScenes.length) {
-        updateScene();
-      } else {
-        showEnding();
-      }
-    }
-    
-    // عرض النهاية
-    function showEnding() {
-      // حساب النتيجة بناءً على الخيارات
-      const yesCount = choices.filter(choice => choice).length;
-      
-      // إخفاء أزرار الاختيار
-      buttons.style.display = 'none';
-      
-      // تحديث الرسوم المتحركة للنهاية
-      const boy = document.querySelector('.boy');
-      const girl = document.querySelector('.girl');
-      
-      if (yesCount >= 3) {
-        // نهاية سعيدة
-        storyText.textContent = "تهانينا! لقد وصلت إلى نهاية سعيدة!";
-        endingMessage.textContent = "وافقت البنت على الزواج، وعاشا معًا بسعادة وهدوء!";
-        endingMessage.className = "ending-message happy-ending";
-        boy.innerHTML = "💑";
-        girl.innerHTML = "";
-        boy.style.transform = 'scale(1.2)';
-      } else {
-        // نهاية مفتوحة
-        storyText.textContent = "لقد وصلت إلى نهاية القصة!";
-        endingMessage.textContent = "القصة لم تنتهِ بعد، المستقبل يحمل مفاجآت كثيرة!";
-        endingMessage.className = "ending-message open-ending";
-        boy.innerHTML = "🤔";
-        girl.innerHTML = "💭";
-      }
-      
-      // إظهار رسالة النهاية وزر إعادة التشغيل
-      endingMessage.style.display = 'block';
-      restartBtn.style.display = 'block';
-      sceneIndicator.textContent = "انتهت القصة";
-    }
-    
-    // إعادة تشغيل اللعبة
-    function restartGame() {
-      currentScene = 0;
-      choices = [];
-      buttons.style.display = 'flex';
-      endingMessage.style.display = 'none';
-      restartBtn.style.display = 'none';
-      updateScene();
-    }
-    
-    // بدء اللعبة
-    updateScene();
-  </script>
+</script>
+```
+
 </body>
 </html>
